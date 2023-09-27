@@ -1,0 +1,41 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Example HTMX</title>
+    <script
+      src="https://unpkg.com/htmx.org@1.9.6"
+      integrity="sha384-FhXw7b6AlE/jyjlZH5iHa/tTe9EpJ1Y55RjcgPbjeWMskSxZt1v9qkxLJWNJaGni"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      * {
+  transition: all 1s ease-in;
+  margin:0; padding: 0;
+  color: #FFF;
+  background: #000;
+  font-family:'Courier New', Courier, monospace
+      }
+      html,body { padding: 30px}
+      hr { margin: 25px 0;}
+      h4 { color: #514949}
+    </style>
+  </head>
+  <h4>Now: </h4>
+  <div hx-get="/date" hx-trigger="load, every 1s">"2023-09-27T21:23:36.794Z"</div>
+  <hr />
+  <h4>A random The Lord of the Rings movie quote:</h4>
+  <pre hx-get="/lotr" hx-trigger="load, every 20s">{
+    "id": 402,
+    "char": "FARAMIR",
+    "dialog": "My lord Osgiliath is over run.   ",
+    "movie": "The Return of the King "
+}</pre>
+  <hr />
+  <h4>prompt suggestions for image creation via AI</h4>
+  <pre hx-get="/prompt" hx-trigger="every 5s">Creating prompt suggestions for image creation via AI</pre>
+  <hr />
+  <h4>Color:</h4>
+  <pre class="color" hx-get="/color" hx-trigger="load, every 5s">#000</pre>
+  </body>
+</html>

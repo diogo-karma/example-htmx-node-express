@@ -1,0 +1,21 @@
+{
+  "name": "example-express-htmx",
+  "version": "1.0.0",
+  "description": "exampple express using HTMX",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "express",
+    "htmx"
+  ],
+  "author": "diogo karma",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "promptmaker": "^1.1.0",
+    "random-lotr-movie-quote": "^1.1.1"
+  }
+}
