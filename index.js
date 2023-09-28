@@ -1,5 +1,5 @@
 /*
-  This Node.js code creates an Express server that exposes four APIs:
+  This Node.js code creates an Express server that exposes five APIs:
 
   * `/date`: Returns the current date and time.
   * `/lotr`: Returns a random quote from the Lord of the Rings movie.
