@@ -2,8 +2,6 @@
 
 It shows how to create a web application that allows users to view quotes from the Lord of the Rings movie, prompts to create images and more.
 
-Demo: https://htmx.dataflix.app/
-
 ## What is HTMX?
 
 htmx is the HTML extension syntax that replaces JavaScript with simple markup. It could change the course of web development.
