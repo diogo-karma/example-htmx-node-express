@@ -1,3 +1,15 @@
+/*
+  This Node.js code creates an Express server that exposes four APIs:
+
+  * `/date`: Returns the current date and time.
+  * `/lotr`: Returns a random quote from the Lord of the Rings movie.
+  * `/prompt`: Returns a random prompt to generate an image via AI.
+  * `/color`: Returns a random color from the Colr API.
+  * `/new-content`: Returns a random variation of the philosopher Spinoza's name.
+  
+  The code also uses CORS to allow APIs to be accessed from any domain.
+*/
+
 const express = require("express");
 const lotr = require("random-lotr-movie-quote");
 const promptmaker = require("promptmaker");
@@ -18,6 +30,7 @@ app.get("/lotr", (req, res) => {
 app.get("/prompt", (req, res) => {
   res.send(fJSON(promptmaker()));
 });
+
 app.get("/new-content", (req, res) => {
   let spinoza = [
     "Baruch Espinoza",
@@ -27,9 +40,12 @@ app.get("/new-content", (req, res) => {
     "Benedictus de Spinoza",
     "Bento de Espinosa",
     "Benedito de Espinosa",
+    "Spinoza",
+    "Espinoza",
   ];
-  res.send(spinoza[Math.floor(Math.random() * words.length)]);
+  res.send(spinoza[Math.floor(Math.random() * spinoza.length)]);
 });
+
 app.get("/color", async (req, res) => {
   const data = await fetch("https://www.colr.org/json/color/random");
   res.send(fJSON((await data.json()).colors));
