@@ -1,14 +1,16 @@
 {
   "name": "example-express-htmx",
   "version": "1.0.0",
-  "description": "exampple express using HTMX",
+  "description": "example express using HTMX",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "keywords": [
     "express",
-    "htmx"
+    "htmx",
+    "lord of the rings",
+    "promptmaker"
   ],
   "author": "diogo karma",
   "license": "MIT",

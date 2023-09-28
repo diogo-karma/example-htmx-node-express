@@ -18,7 +18,18 @@ app.get("/lotr", (req, res) => {
 app.get("/prompt", (req, res) => {
   res.send(fJSON(promptmaker()));
 });
-
+app.get("/new-content", (req, res) => {
+  let spinoza = [
+    "Baruch Espinoza",
+    "Baruch Spinoza",
+    "Baruch Espinosa",
+    "Baruch de Espinosa",
+    "Benedictus de Spinoza",
+    "Bento de Espinosa",
+    "Benedito de Espinosa",
+  ];
+  res.send(spinoza[Math.floor(Math.random() * words.length)]);
+});
 app.get("/color", async (req, res) => {
   const data = await fetch("https://www.colr.org/json/color/random");
   res.send(fJSON((await data.json()).colors));

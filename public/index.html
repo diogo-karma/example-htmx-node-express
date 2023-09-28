@@ -8,34 +8,99 @@
       integrity="sha384-FhXw7b6AlE/jyjlZH5iHa/tTe9EpJ1Y55RjcgPbjeWMskSxZt1v9qkxLJWNJaGni"
       crossorigin="anonymous"
     ></script>
+    <script src="https://unpkg.com/htmx.org/dist/ext/class-tools.js"></script>
     <style>
       * {
-  transition: all 1s ease-in;
-  margin:0; padding: 0;
-  color: #FFF;
-  background: #000;
-  font-family:'Courier New', Courier, monospace
+        transition: all 1s ease-in;
+        margin: 0;
+        padding: 0;
+        color: #fff;
+        background: #000;
+        font-family: "Courier New", Courier, monospace;
       }
-      html,body { padding: 30px}
-      hr { margin: 25px 0;}
-      h4 { color: #514949}
+
+      html,
+      body {
+        padding: 30px;
+      }
+
+      hr {
+        margin: 25px 0;
+      }
+
+      h4 {
+        color: #514949;
+      }
+
+      @keyframes fade-in {
+        from {
+          opacity: 0;
+        }
+      }
+
+      @keyframes fade-out {
+        to {
+          opacity: 0;
+        }
+      }
+
+      @keyframes slide-from-right {
+        from {
+          transform: translateX(90px);
+        }
+      }
+
+      @keyframes slide-to-left {
+        to {
+          transform: translateX(-90px);
+        }
+      }
+
+      .slide-it {
+        view-transition-name: slide-it;
+      }
+
+      ::view-transition-old(slide-it) {
+        animation: 180ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
+          600ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
+      }
+      ::view-transition-new(slide-it) {
+        animation: 420ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in,
+          600ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
+      }
     </style>
   </head>
-  <h4>Now: </h4>
-  <div hx-get="/date" hx-trigger="load, every 1s">"2023-09-27T21:23:36.794Z"</div>
-  <hr />
-  <h4>A random The Lord of the Rings movie quote:</h4>
-  <pre hx-get="/lotr" hx-trigger="load, every 20s">{
+  <body>
+    <h4>Now:</h4>
+    <div hx-get="/date" hx-trigger="every 1s">"2023-09-27T21:23:36.794Z"</div>
+    <hr />
+    <div class="slide-it">
+      <h1>E-s-p-i-n-o-z-a?</h1>
+      <button
+        hx-get="/new-content"
+        hx-swap="innerHTML transition:true"
+        hx-target="closest div"
+      >
+        Swap It!
+      </button>
+    </div>
+    <hr />
+    <h4>A random The Lord of the Rings movie quote:</h4>
+    <pre hx-get="/lotr" hx-trigger="every 20s">
+{
     "id": 402,
     "char": "FARAMIR",
     "dialog": "My lord Osgiliath is over run.   ",
     "movie": "The Return of the King "
-}</pre>
-  <hr />
-  <h4>prompt suggestions for image creation via AI</h4>
-  <pre hx-get="/prompt" hx-trigger="every 5s">Creating prompt suggestions for image creation via AI</pre>
-  <hr />
-  <h4>Color:</h4>
-  <pre class="color" hx-get="/color" hx-trigger="load, every 5s">#000</pre>
+}</pre
+    >
+    <hr />
+    <h4>prompt suggestions for image creation via AI</h4>
+    <pre hx-get="/prompt" hx-trigger="every 5s">
+Creating prompt suggestions for image creation via AI</pre
+    >
+    <hr />
+    <h4>Color:</h4>
+    <pre class="color" hx-get="/color" hx-trigger="every 5s">#000</pre>
   </body>
 </html>
